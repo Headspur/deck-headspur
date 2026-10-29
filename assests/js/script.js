@@ -113,7 +113,6 @@ function selectTab(tab) {
     ...reports[cadence].map((text, index) => {
       const row = document.createElement("div");
       row.className = "report-row";
-      if (index === 1) row.classList.add("is-featured");
       const trigger = document.createElement("button");
       trigger.type = "button";
       trigger.className = "report-trigger";
@@ -123,7 +122,7 @@ function selectTab(tab) {
       const label = document.createElement("span");
       label.textContent = text;
       const icon = document.createElement("img");
-      icon.src = "deck-images/deck-artwork/93ad7.svg";
+      icon.src = "assests/images/deck-artwork/93ad7.svg";
       icon.alt = "";
       trigger.append(label, icon);
       const content = document.createElement("div");
@@ -172,7 +171,7 @@ tabs.forEach((tab, i) => {
 });
 selectTab(tabs[0]);
 
-// Desktop 2 and 3 share a layout and provide the two campaign states.
+// The campaign image and caption follow the current Deck Web design.
 (() => {
   const hero = document.querySelector('.hero');
   const slider = hero.querySelector('.hero-slider');
@@ -181,9 +180,16 @@ selectTab(tabs[0]);
   const status = hero.querySelector('.hero-status');
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   const slides = [
-    { image: 'deck-images/deck-artwork/370df.png', alt: 'Fashion campaign featuring a model in an orange shirt' },
-    { image: 'deck-images/deck-artwork/74ffd.png', alt: 'Kidswear campaign featuring two children in green and denim outfits' },
+    { image: 'assests/images/deck-artwork/a9d35.png', alt: 'Celio fashion campaign featuring a model holding a jacket', logo: 'assests/images/deck-artwork/ad1e6.svg', brand: 'Celio' },
+    { image: 'assests/images/deck-artwork/370df.png', alt: 'Neopalms fashion campaign featuring a model in an orange shirt', logo: 'assests/images/deck-artwork/0017c.png', brand: 'Neopalms', expanded: true },
+    { image: 'assests/images/deck-artwork/74ffd.png', alt: 'KapKids campaign featuring two children in green and denim outfits', logo: 'assests/images/deck-artwork/1d89e.png', brand: 'KapKids', expanded: true },
   ];
+  if (slides.length < 2) {
+    slider.querySelectorAll('button').forEach(button => { button.disabled = true; });
+    pause.hidden = true;
+    return;
+  }
+  const captionLogo = slider.querySelector('.hero-caption img');
   const first = art.querySelector('.hero-photo');
   const photos = slides.map((slide, index) => {
     const photo = index ? first.cloneNode(false) : first;
@@ -191,6 +197,7 @@ selectTab(tabs[0]);
     photo.alt = slide.alt;
     photo.draggable = false;
     photo.classList.toggle('is-active', index === 0);
+    photo.classList.toggle('hero-photo-expanded', Boolean(slide.expanded));
     photo.setAttribute('aria-hidden', String(index !== 0));
     if (index) {
       photo.removeAttribute('fetchpriority');
@@ -199,6 +206,12 @@ selectTab(tabs[0]);
     return photo;
   });
   hero.setAttribute('aria-roledescription', 'carousel');
+  status.textContent = 'Campaign 1 of ' + slides.length;
+  const captionLogos = slides.map(slide => {
+    const logo = new Image();
+    logo.src = slide.logo;
+    return logo;
+  });
   let current = 0;
   let version = 0;
   let timer;
@@ -207,7 +220,7 @@ selectTab(tabs[0]);
   function schedule() {
     clearTimeout(timer);
     if (!paused && !hovering && !document.hidden && !hero.contains(document.activeElement)) {
-      timer = setTimeout(() => move(1), 6000);
+      timer = setTimeout(() => move(1), 3000);
     }
   }
   function updatePause() {
@@ -219,9 +232,11 @@ selectTab(tabs[0]);
   async function move(direction, announce = false) {
     const target = (current + direction + slides.length) % slides.length;
     const request = ++version;
-    try { await photos[target].decode(); } catch { schedule(); return; }
+    try { await Promise.all([photos[target].decode(), captionLogos[target].decode()]); } catch { schedule(); return; }
     if (request !== version) return;
     current = target;
+    captionLogo.src = slides[target].logo;
+    captionLogo.alt = slides[target].brand;
     photos.forEach((photo, index) => {
       photo.classList.toggle('is-active', index === target);
       photo.setAttribute('aria-hidden', String(index !== target));

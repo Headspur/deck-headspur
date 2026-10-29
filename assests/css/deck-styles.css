@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@200;300;400;500;600;700&family=Lexend:wght@700&display=swap");
 :root {
   --bg: #232323;
   --blue: #0075ff;
@@ -1523,7 +1523,6 @@ body {
 .hero-photo-expanded{width:147.14%;height:147.15%;left:-23.57%;top:-32.81%}
 .hero-slider button{opacity:0;pointer-events:none;transition:opacity 220ms ease}
 @media(hover:hover){.hero:hover .hero-slider button{opacity:1;pointer-events:auto}}
-.hero:has(:focus-visible) .hero-slider button{opacity:1;pointer-events:auto}
 @media(prefers-reduced-motion:reduce){.hero-photo,.hero-slider button{transition:none}}
 
 /* Service enquiry dialog */
