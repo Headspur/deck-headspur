@@ -2,10 +2,12 @@
 
 Open index.html in a browser. No build step or framework is required.
 
-The responsive homepage follows Desktop - 2 (37:364) and Desktop - 3 (37:699) in the [Headspur Figma file](https://www.figma.com/design/hVEhCqzLfeqtqSklJKsueH/Headspur-Website---2026-Deck?node-id=37-364). These frames share a layout and supply the two hero campaign images. The carousel supports buttons, arrow keys, touch gestures, and a pause control. It pauses while hovered or focused and respects reduced motion.
+The page follows [Deck Web (198:341)](https://www.figma.com/design/hVEhCqzLfeqtqSklJKsueH/Headspur-Website---2026-Deck?node-id=198-341), including the Celio hero, statistics, client grid, Growth services, Premium Work, Deliverables & Cadence, Ways of Working, Success Stories, and contact footer.
 
-Current Figma exports live in deck-images/deck-artwork/. deck-desktop.css applies the updated layout over the existing shared styles. Google Sans Flex loads from Google Fonts, with Arial as a fallback. All page artwork is served locally.
+Stylesheets live in assests/css/, JavaScript in assests/js/, and local artwork in assests/images/deck-artwork/. Google Sans Flex loads from Google Fonts with Arial as a fallback. Figma asset download URLs are not used at runtime.
 
-Vanilla JavaScript powers the mobile menu, reporting tabs, accordions, and enquiry dialog. The footer form opens an email draft. The service enquiry form retains its existing Mailchimp integration. Monthly and quarterly reports and expanded working-practice details supplement the default Figma state.
+Report rows start closed and neutral. Ways of Working follows the reference site: Communication starts open, and selecting a different practice displays its description inside the pill while closing the previous one. Weekly is selected and highlighted by default, with its report content shown initially. The hero starts with Celio from the current frame and rotates through Neopalms and KapKids. The carousel advances every three seconds, pauses while hovered or focused, and respects reduced motion. Arrows appear only on hover; keyboard navigation and swipe remain supported. The Pause control is hidden. Premium Work glows appear only on hover.
 
-The project contains the page source and its required local artwork. Temporary previews, old backups, export metadata, and unused images have been removed.
+Vanilla JavaScript powers the mobile menu, reporting tabs, accordions, and enquiry dialog. The footer form opens an email draft. The service enquiry form retains its existing Mailchimp integration.
+
+Premium Work descriptions and outcome labels follow https://bejewelled-liger-35c5e1.netlify.app/.
