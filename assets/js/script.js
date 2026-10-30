@@ -122,7 +122,7 @@ function selectTab(tab) {
       const label = document.createElement("span");
       label.textContent = text;
       const icon = document.createElement("img");
-      icon.src = "assests/images/deck-artwork/93ad7.svg";
+      icon.src = "assets/images/deck-artwork/93ad7.svg";
       icon.alt = "";
       trigger.append(label, icon);
       const content = document.createElement("div");
@@ -180,9 +180,9 @@ selectTab(tabs[0]);
   const status = hero.querySelector('.hero-status');
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   const slides = [
-    { image: 'assests/images/deck-artwork/a9d35.png', alt: 'Celio fashion campaign featuring a model holding a jacket', logo: 'assests/images/deck-artwork/ad1e6.svg', brand: 'Celio' },
-    { image: 'assests/images/deck-artwork/370df.png', alt: 'Neopalms fashion campaign featuring a model in an orange shirt', logo: 'assests/images/deck-artwork/0017c.png', brand: 'Neopalms', expanded: true },
-    { image: 'assests/images/deck-artwork/74ffd.png', alt: 'KapKids campaign featuring two children in green and denim outfits', logo: 'assests/images/deck-artwork/1d89e.png', brand: 'KapKids', expanded: true },
+    { image: 'assets/images/deck-artwork/a9d35.png', alt: 'Celio fashion campaign featuring a model holding a jacket', logo: 'assets/images/deck-artwork/ad1e6.svg', brand: 'Celio' },
+    { image: 'assets/images/deck-artwork/370df.png', alt: 'Neopalms fashion campaign featuring a model in an orange shirt', logo: 'assets/images/deck-artwork/0017c.png', brand: 'Neopalms', expanded: true },
+    { image: 'assets/images/deck-artwork/74ffd.png', alt: 'KapKids campaign featuring two children in green and denim outfits', logo: 'assets/images/deck-artwork/1d89e.png', brand: 'KapKids', expanded: true },
   ];
   if (slides.length < 2) {
     slider.querySelectorAll('button').forEach(button => { button.disabled = true; });
