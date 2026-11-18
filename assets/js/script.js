@@ -48,6 +48,16 @@
   });
 })();
 
+const moreStories = document.querySelector("#more-stories");
+const loadMoreStories = document.querySelector(".stories-load-more");
+loadMoreStories.addEventListener("click", () => {
+  const gallery = moreStories.content.firstElementChild.cloneNode(true);
+  moreStories.replaceWith(gallery);
+  gallery.focus();
+  loadMoreStories.hidden = true;
+}, { once: true });
+loadMoreStories.hidden = false;
+
 // Scale the responsive circle to cover the card's farthest corner.
 document.querySelectorAll("article.service, article.strategy").forEach((card) => {
   function updateFillScale() {
