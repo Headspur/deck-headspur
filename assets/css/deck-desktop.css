@@ -108,6 +108,21 @@
 .desktop-2026 #work { position:relative; max-width:1201px; }
 .desktop-2026 #work .section-subtitle { font-size:14px; }
 .desktop-2026 .gallery { max-width:1200px; grid-template-columns:385fr 382fr 385fr; }
+.desktop-2026 .gallery-more { margin-top:24px; }
+.stories-load-more {
+  display:block;
+  min-height:50px;
+  margin:32px auto 0;
+  padding:0 28px;
+  border:1px solid #272931;
+  border-radius:60px;
+  background:#0068e3;
+  color:#fff;
+  font-size:14px;
+  font-weight:600;
+}
+.stories-load-more[hidden] { display:none; }
+@media(hover:hover) { .stories-load-more:hover { background:#005cc9; } }
 .desktop-2026 .project { position:relative; margin:0; width:100%; overflow:hidden; border-radius:16px; background:#2d2d2d; box-shadow:0 2px 4px -2px #18274b1f,0 4px 4px -2px #18274b14; }
 .desktop-2026 .project-apparel { aspect-ratio:385 / 286; }
 .desktop-2026 .project-lifestyle { aspect-ratio:385 / 367; }
